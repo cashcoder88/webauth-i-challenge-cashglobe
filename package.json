@@ -1,11 +1,10 @@
-
 {
   "name": "webauth-i-challenge-cashglobe",
   "version": "1.0.0",
   "description": "Web Auth I Challenge Project",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js",
+    "server": "nodemon",
     "start": "node index.js"
   },
   "keywords": [],

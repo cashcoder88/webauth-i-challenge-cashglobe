@@ -3,11 +3,10 @@ const bcrypt = require('bcryptjs');
 
 const Users = require('../users/users-model');
 
-
 router.post('/register', (req, res) => {
     let user = req.body;
-
-    const hash = bcrypt.hashSync(user.password, 8);
+    console.log(user)
+    const hash = bcrypt.hashSync(user.password, 10);
 
     user.password = hash;
 
@@ -24,7 +23,7 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
     let {username, password} = req.body;
-
+    console.log(req.body)
     Users.findBy({username})
     .first()
     .then(user => {
