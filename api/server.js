@@ -19,6 +19,6 @@ server.get('/', (req, res) => {
     res.json("It's alive!");
 });
 
-//Comment for PR for second days project cookies and sessions
+//Comment for PR for second days project cookies and sessionss
 
 module.exports = server; 
