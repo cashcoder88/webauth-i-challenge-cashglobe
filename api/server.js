@@ -9,9 +9,29 @@ const authRouter = require('../auth/auth-router.js');
 
 const server = express();
 
+const sessionConfig = {
+    name: 'zebra',
+    secret: 'keep it secret, keep it safe!',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 30,
+        secure: false,
+        httpOnly: true,
+    },
+    store: new KnexSessionStore({
+        knex: require('../database/dbConfig'),
+        tablename: 'sessions',
+        sidfieldname: 'sid',
+        createtable: true,
+        clearInterval: 1000 * 60 * 60
+    }),
+};
+
 server.use(helmet());
 server.use(express.json());
 server.use(cors());
+server.use(session(sessionConfig))
 
 server.use('/api/users', usersRouter)
 server.use('/api/auth', authRouter)
