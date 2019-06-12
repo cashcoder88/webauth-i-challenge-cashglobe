@@ -40,13 +40,13 @@ router.post('/login', (req, res) => {
   });
 
   router.delete('/', (req, res) => {
+    let user = req.body;
       if (req.session) {
-          req.session.destroy()''
+          req.session.destroy();
       } 
       res.status(200).json({
-          message: "Goodbye, come back soon!"
+          message: `Goodbye Friend, come back soon!`
       })
-
   })
 
 module.exports = router; 
